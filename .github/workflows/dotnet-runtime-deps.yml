@@ -1,0 +1,51 @@
+name: dotnet-runtime-deps
+
+on:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  ubuntu-jammy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - id: checkout
+        name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - id: qemu
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - id: setup_buildx
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Log in to the GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        name: Extract metadata (tags, labels) for Docker
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,enable=true,priority=100,prefix=ubuntu-22.04-,suffix=,format=short
+            type=ref,enable=true,priority=600,prefix=ubuntu-22.04-,suffix=,event=tag
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ubuntu/22.04/
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.tags }}
+            ubuntu-22.04-latest
+          labels: ${{ steps.meta.outputs.labels }}
+      
