@@ -39,13 +39,12 @@ jobs:
           tags: |
             type=sha,enable=true,priority=100,prefix=ubuntu-22.04-,suffix=,format=short
             type=ref,enable=true,priority=600,prefix=ubuntu-22.04-,suffix=,event=tag
+            type=raw,enable=true,priority=200,prefix=ubuntu-22.04-,suffix=,value=latest
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: ubuntu/22.04/
           push: true
-          tags: |
-            ${{ steps.meta.outputs.tags }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-22.04-latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       
