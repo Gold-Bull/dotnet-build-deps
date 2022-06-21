@@ -4,6 +4,7 @@ RUN apt-get update \
     && apt-get install -y \
         curl \
         clang-14 \
+        clang-tools-14 \
         gdb \
         liblldb-14-dev \
         lldb-14 \
@@ -62,13 +63,8 @@ RUN curl -L -o azure-cli_jammy_all.deb https://aka.ms/InstallAzureCliJammyEdge \
         libbsd-dev \
         libmpc-dev \
         libxml2-utils \
-        clang-9 \
-        clang-tools-9 \
-        liblldb-6.0-dev \
-        lld-9 \
-        lldb-6.0 \
-        llvm-9 \
-        python-lldb-6.0 \
+        lld-14 \
+        python3-lldb-14 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY sources.list /sources.list
