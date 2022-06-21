@@ -69,13 +69,13 @@ RUN curl -L -o azure-cli_jammy_all.deb https://aka.ms/InstallAzureCliJammyEdge \
 
 COPY sources.list /sources.list
 
-RUN mkdir -p /rootfs/s390x \
-    && qemu-debootstrap --arch s390x jammy /rootfs/s390x \
+RUN mkdir -p /crossrootfs/s390x \
+    && qemu-debootstrap --arch s390x jammy /crossrootfs/s390x \
     http://ports.ubuntu.com/ubuntu-ports/ \
-    && cp /sources.list /rootfs/s390x/etc/apt/sources.list \
-    && chroot /rootfs/s390x apt-get update \
-    && chroot /rootfs/s390x apt-get -f -y install \
-    && chroot /rootfs/s390x apt-get -y install build-essential \
+    && cp /sources.list /crossrootfs/s390x/etc/apt/sources.list \
+    && chroot /crossrootfs/s390x apt-get update \
+    && chroot /crossrootfs/s390x apt-get -f -y install \
+    && chroot /crossrootfs/s390x apt-get -y install build-essential \
     symlinks \
     libicu-dev \
     liblttng-ust-dev \
@@ -83,5 +83,5 @@ RUN mkdir -p /rootfs/s390x \
     libkrb5-dev \
     libssl-dev \
     zlib1g-dev \
-    && chroot /rootfs/s390x symlinks -cr /usr \
-    && chroot /rootfs/s390x apt-get clean
+    && chroot /crossrootfs/s390x symlinks -cr /usr \
+    && chroot /crossrootfs/s390x apt-get clean

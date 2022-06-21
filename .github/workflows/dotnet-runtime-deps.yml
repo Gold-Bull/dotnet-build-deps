@@ -46,6 +46,6 @@ jobs:
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ubuntu-22.04-latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ubuntu-22.04-latest
           labels: ${{ steps.meta.outputs.labels }}
       
