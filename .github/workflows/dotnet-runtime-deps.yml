@@ -44,7 +44,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ubuntu/22.04/
+          context: "{{defaultContext}}:ubuntu/22.04"
           file: Dockerfile.amd64
           push: true
           build-contexts: |
@@ -88,7 +88,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ubuntu/22.04/
+          context: "{{defaultContext}}:ubuntu/22.04"
           file: Dockerfile.cross.s390x
           push: true
           build-contexts: |
