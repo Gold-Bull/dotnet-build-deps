@@ -1,0 +1,68 @@
+FROM ubuntu
+
+RUN apt-get update \
+    && apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        locales \
+        sudo \
+        software-properties-common \
+        wget \
+    && wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - \
+    && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ jammy main' \
+    && rm -rf /var/lib/apt/lists/* \
+    && locale-gen en_US.UTF-8
+
+RUN apt-get update \
+    && apt-get install -y \
+        autoconf \
+        automake \
+        binfmt-support \
+        binutils-arm-linux-gnueabihf \
+        binutils-s390x-linux-gnu \
+        build-essential \
+        clang-9 \
+        clang-tools-9 \
+        cmake \
+        cpio \
+        debootstrap \
+        gdb \
+        gettext \
+        git \
+        gnupg \
+        libarchive-dev \
+        libbsd-dev \
+        libbz2-dev \
+        libcurl4-openssl-dev \
+        libgdiplus \
+        libicu-dev \
+        libkrb5-dev \
+        liblldb-6.0-dev \
+        liblttng-ust-dev \
+        liblzma-dev \
+        libmpc-dev \
+        libnuma-dev \
+        libssl-dev \
+        libtool \
+        libunwind8 \
+        libunwind8-dev \
+        libxml2-utils \
+        libz-dev \
+        lld-9 \
+        lldb-6.0 \
+        llvm-9 \
+        make \
+        nodejs \
+        npm \
+        python3 \
+        python-lldb-6.0 \
+        qemu \
+        qemu-user-static \
+        rpm2cpio \
+        tar \
+        uuid-dev \
+        zip \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install -g azure-cli@0.9.20 \
+    && npm cache clean
