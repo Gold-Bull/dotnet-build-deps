@@ -15,11 +15,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
       - id: qemu
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -59,11 +54,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
       - id: qemu
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
