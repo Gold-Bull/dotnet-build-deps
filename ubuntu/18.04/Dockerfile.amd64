@@ -53,8 +53,9 @@ RUN apt-get update \
         lldb-6.0 \
         llvm-9 \
         make \
-        nodejs \
         node-gyp \
+        nodejs \
+        nodejs-dev \
         npm \
         python3 \
         python-lldb-6.0 \
