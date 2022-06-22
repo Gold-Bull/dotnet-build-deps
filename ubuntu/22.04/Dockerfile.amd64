@@ -63,7 +63,7 @@ RUN apt-get update \
         tar \
         uuid-dev \
         zip \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
     && curl -L -o azure-cli_jammy_all.deb https://aka.ms/InstallAzureCliJammyEdge \
     && dpkg -i azure-cli_jammy_all.deb \
     && rm azure-cli_jammy_all.deb
