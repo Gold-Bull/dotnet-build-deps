@@ -14,7 +14,9 @@ RUN apt-get update \
     && wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - \
     && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
     && rm -rf /var/lib/apt/lists/* \
-    && locale-gen en_US.UTF-8
+    && locale-gen en_US.UTF-8 \
+    && npm install -g azure-cli@0.9.20 \
+    && npm cache clean
 
 RUN apt-get update \
     && apt-get install -y \
@@ -63,6 +65,4 @@ RUN apt-get update \
         tar \
         uuid-dev \
         zip \
-    && rm -rf /var/lib/apt/lists/* \
-    && npm install -g azure-cli@0.9.20 \
-    && npm cache clean
+    && rm -rf /var/lib/apt/lists/*
