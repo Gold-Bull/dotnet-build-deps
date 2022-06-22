@@ -85,6 +85,9 @@ jobs:
             type=sha,enable=true,priority=100,prefix=${{ env.UBUNTU_JAMMY }}-,suffix=-cross-s390x,format=short
             type=ref,enable=true,priority=600,prefix=${{ env.UBUNTU_JAMMY }}-,suffix=-cross-s390x,event=tag
             type=raw,enable=true,priority=200,prefix=${{ env.UBUNTU_JAMMY }}-,suffix=-cross-s390x,value=latest
+      - name: lowercase
+        run: |
+          echo "IMAGE_NAME=${IMAGE_NAME,,}" >> ${GITHUB_ENV}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
