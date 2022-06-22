@@ -1,4 +1,4 @@
-name: dotnet-runtime-deps
+name: dotnet-runtime-deps-ubuntu
 
 on:
   workflow_dispatch:
