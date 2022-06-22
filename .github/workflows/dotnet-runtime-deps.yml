@@ -48,7 +48,7 @@ jobs:
           file: Dockerfile.amd64
           push: true
           build-contexts: |
-            ubuntu=ubuntu:22.04
+            ubuntu=docker-image://ubuntu:22.04
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       
@@ -92,6 +92,6 @@ jobs:
           file: Dockerfile.cross.s390x
           push: true
           build-contexts: |
-            ubuntu=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.UBUNTU_JAMMY }}-latest-amd64
+            ubuntu=docker-image://${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.UBUNTU_JAMMY }}-latest-amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
