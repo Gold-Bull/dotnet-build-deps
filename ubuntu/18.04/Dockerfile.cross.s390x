@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN mkdir -p /crossrootfs/s390x \
-    && qemu-debootstrap --arch s390x jammy /crossrootfs/s390x \
+    && qemu-debootstrap --arch s390x bionic /crossrootfs/s390x \
     http://ports.ubuntu.com/ubuntu-ports/
 
 COPY sources.list /crossrootfs/s390x/etc/apt/sources.list
