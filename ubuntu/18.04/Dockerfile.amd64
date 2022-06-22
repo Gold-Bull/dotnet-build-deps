@@ -8,6 +8,8 @@ RUN apt-get update \
         locales \
         sudo \
         software-properties-common \
+        nodejs \
+        npm \
         wget \
     && wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - \
     && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
@@ -53,10 +55,6 @@ RUN apt-get update \
         lldb-6.0 \
         llvm-9 \
         make \
-        node-gyp \
-        nodejs \
-        nodejs-dev \
-        npm \
         python3 \
         python-lldb-6.0 \
         qemu \
