@@ -10,7 +10,7 @@ RUN apt-get update \
         software-properties-common \
         wget \
     && wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - \
-    && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ jammy main' \
+    && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
     && rm -rf /var/lib/apt/lists/* \
     && locale-gen en_US.UTF-8
 
