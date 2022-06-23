@@ -1,12 +1,12 @@
 FROM ubuntu
 
-RUN mkdir -p /crossrootfs/s390x \
+RUN --security=insecure mkdir -p /crossrootfs/s390x \
     && qemu-debootstrap --arch s390x bionic /crossrootfs/s390x \
     http://ports.ubuntu.com/ubuntu-ports/
 
 COPY sources.list /crossrootfs/s390x/etc/apt/sources.list
 
-RUN chroot /crossrootfs/s390x apt-get update \
+RUN --security=insecure chroot /crossrootfs/s390x apt-get update \
     && chroot /crossrootfs/s390x apt-get -f -y install \
     && chroot /crossrootfs/s390x apt-get -y install build-essential \
     symlinks \
