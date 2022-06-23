@@ -85,6 +85,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:ubuntu/${{ env.UBUNTU_VERSION }}"
+          allow: |
+            security.insecure
           file: Dockerfile.cross.s390x
           push: true
           build-contexts: |
