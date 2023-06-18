@@ -8,4 +8,4 @@ ARG BUILD_DEPS_SCRIPT=https://gist.githubusercontent.com/SaileshBellamkonda/e050
 RUN --security=insecure set -ex; \
     apt-get update; \
     apt-get install -y curl bash; \
-    curl -L -o - $(BUILD_DEPS_SCRIPT) | bash -;
+    curl -L -o - $BUILD_DEPS_SCRIPT | bash -;
