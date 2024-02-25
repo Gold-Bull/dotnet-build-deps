@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1-labs
+# syntax=docker/dockerfile:labs
 FROM ghcr.io/gold-bull/dotnet-ubuntu-base:ubuntu-22.04-latest
 
 ARG TARGETARCH
