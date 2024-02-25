@@ -14,7 +14,6 @@ on:
     - main
 
 env:
-  PLATFORMS_TO_BUILD: linux/amd64,linux/s390x
   NODEJS_VERSION: v14.21.3
 
 jobs:
@@ -35,7 +34,7 @@ jobs:
     
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: "gold-bull/dotnet-ubuntu-build"
+      IMAGE_NAME: "gold-bull/dotnet-build-deps"
       UBUNTU_VERSION: ${{ matrix.ubuntu }}
     
     steps:
@@ -75,7 +74,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        platforms: ${{ env.PLATFORMS_TO_BUILD }}
         allow: |
           security.insecure
         provenance: false
