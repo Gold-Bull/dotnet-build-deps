@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM ghcr.io/gold-bull/dotnet-ubuntu-base:ubuntu-22.04-latest
+FROM ghcr.io/gold-bull/dotnet-runtime-base:ubuntu-22.04-latest
 
 ARG TARGETARCH
 ARG TARGETOS
