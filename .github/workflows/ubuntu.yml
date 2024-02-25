@@ -76,6 +76,8 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         platforms: ${{ env.PLATFORMS_TO_BUILD }}
+        allow: |
+          security.insecure
         provenance: false
         context: "{{defaultContext}}:src/ubuntu/${{ env.UBUNTU_VERSION }}"
         file: Dockerfile
